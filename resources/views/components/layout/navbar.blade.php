@@ -4,8 +4,8 @@
         <div class="flex -mx-4 items-center justify-between relative">
             <div class="pr-4 w-60 max-w-full">
                 <a href="/" class="w-full flex items-center py-2">
-                    <img src="{{url('images/jeff.jpg')}}" class="w-[48px] lg:w-[64px]  inline-block dard:hidden rounded"
-                        alt="logo" />
+                    {{-- <img src="{{url('images/jeff.jpg')}}" class="w-[48px] lg:w-[64px]  inline-block dard:hidden rounded"
+                        alt="logo" /> --}}
                     <span class="text-xl xl:text-2xl font-bold text-[#0c7187] dark:text-white">JeyCodeur</span>
                 </a>
             </div>
