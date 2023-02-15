@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{config('app.name')}}</title>
     <link rel="icon" type="image/x-icon" href="{{asset('images/jey.png')}}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.css')}}"> --}}
 
     @vite('resources/js/app.js')
     <meta name="csrf-token" content="{{csrf_token()}}">

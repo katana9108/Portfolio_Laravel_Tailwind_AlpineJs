@@ -33,13 +33,13 @@
                     </h2>
                     <p class=" mb-8 dark:text-white text-dark">
                         I am working as un developper for 3+ years.<br/>
-                        During my career , i have worked on various tyoes of projects with various technologies,
+                        During my career , i have worked on various types of projects with various technologies,
                         but very often i feel that i am a junior developper who just started coding.<br/>
                     </p>
                     <p class=" mb-8 dark:text-white text-dark">
-                       In 2019 i created my GitHub compte and share my little project on
+                       In 2020 I created my GitHub compte and share my littles projects on
                        <span class="text-amber-500 font-bold">PHP/LARAVEL</span>, <span class="text-amber-500 font-bold">JAVASCRIPT/REACT</span> and
-                       <span class="text-amber-500 font-bold">Create API with Laravel</span>
+                       <span class="text-amber-500 font-bold">CREATE API REST LARAVEL WITH SANCTUM</span>
                     </p>
                     <div class="ml-3 pb-4">
                         <x-button-link href="https://github.com/katana9108" variant="red" target="_blank">

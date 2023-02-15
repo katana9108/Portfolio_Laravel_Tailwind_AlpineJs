@@ -65,44 +65,33 @@
             <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
                 <div class="relative rounded-lg bg-white dark:bg-slate-800 p-8 shadow-lg sm:p-12">
 
-                    <form action="/contact/submit" method="post" x-on:submit.prevent="submitForm()">
-                        <template x-if="successMessage">
-                            <div class="py-4 px-6 bg-green-600  text-gray-100 mb-4" x-text="successMessage">
-                                Good
-                            </div>
-                        </template>
+                    <form action="/contact/submit" method="post" >
+                        
                         @csrf
                         <div class="mb-6">
-                            <x-forms.input placeholder="Your Name" name="name"
-                                ::class="errors.name ? 'border-red-500 focus:border-red-500':''"
-                                x-model="formData.name" required></x-forms.input>
-                            <template x-if="errors.name[0]">
-                                <div class="text-red-500" x-text="errors.message">
-                                </div>
-                            </template>
-
+                            <x-forms.input-name placeholder="Your Name" name="name" required  value="{{old('name')}}" class="@error('name') is-invalid @enderror"></x-forms.input-name>
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-6">
-                            <x-forms.input required placeholder="Your email" name="email" x-model="formData.email"
-                                ::class="errors.email[0] ? 'border-red-500 focus:border-red-500': '' "></x-forms.input>
-                            <template x-if="errors.email[0]">
-                                <div class="text-red-5OO" x-text="errors.email">
-                                </div>
-                            </template>
-
+                            <x-forms.input-email required placeholder="Your email" name="email" value="{{old('email')}}" class="@error('email') is-invalid @enderror"></x-forms.input-email>
+                            @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-6">
-                            <x-forms.textarea placeholder="YourMessage" name="message"
-                                ::class="errors.email[0] ? 'border-red-500 focus:border-red-500': '' "
-                                x-model="formData.message"></x-forms.textarea>
-                            <template x-if="errors.massage[0]">
-                                <div class="text-red-5OO" x-text="errors.message">
-                                </div>
-                            </template>
+                            <x-forms.textarea placeholder="YourMessage"
+                            class="@error('message') is-invalid @enderror"
+                            name="message"></x-forms.textarea>
+                            @error('message')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div>
-                            <x-button class=" w-full rounded border p-3">
+                            <x-button class=" w-full rounded border p-3 " type="submit">
                                 Send Message
                             </x-button>
                         </div>
@@ -125,48 +114,3 @@
     </div>
 </section>
 <!-- ====== Contact Section End -->
-<script>
-    function submitForm(event){
-    let errors='';
-    let message='';
-    formData=
-    {
-    name:'',
-    email:'',
-    message:'',
-    },
-    fetch('/contact/submit',{
-    method:'POST',
-    headers:{
-    'Content-Type':'application/json',
-    'X-Requested-With': 'XMLHttpRequest',
-    'X-CSRF-TOKEN': document.querySelector(`meta[name='csrf_token']`).getAttribute('content')
-    },
-    body: JSON.stringify(formData)
-    })
-    .then(response =>{
-    if(response.status===200){
-    return response.json();
-    }
-    throw response;
-    })
-    .then(result =>{
-    formData={
-    name:'',
-    email:'',
-    message:'',
-    };
-    successMessage ='Thank you.';
-    })
-    .catch(async (response) =>{
-        const res = await response.json();
-    if(res.status===422){
-    errors= res.errors;
-    }
-    console.log(res);
-    })
-
-    }
-
-
-</script>
